@@ -106,34 +106,25 @@ p, span, div, label, li {{ color: {C['text']} !important; font-family: {C['sans'
     letter-spacing: .07em !important; color: {C['text']} !important;
 }}
 
-/* === ALL BUTTONS — default to dark chip style === */
-.stButton > button {{
+/* === ALL BUTTONS — unified dark chip style === */
+.stButton > button,
+[data-testid="stBaseButton-primary"],
+[data-testid="stBaseButton-secondary"] {{
     background: {C['surface2']} !important;
     color: {C['teal']} !important;
     border: 1px solid {C['teal']}40 !important;
-    font-weight: 500 !important; font-size: .78rem !important;
+    font-weight: 500 !important; font-size: .82rem !important;
     border-radius: 8px !important; letter-spacing: 0 !important;
     font-family: {C['sans']} !important; box-shadow: none !important;
-    transform: none !important; transition: all .2s ease !important;
+    cursor: pointer !important; pointer-events: auto !important;
+    transition: background .2s ease !important;
 }}
-.stButton > button:hover {{
+.stButton > button:hover,
+[data-testid="stBaseButton-primary"]:hover,
+[data-testid="stBaseButton-secondary"]:hover {{
     background: {C['teal_dim']} !important;
-    box-shadow: none !important; transform: none !important;
-}}
-
-/* === PRIMARY BUTTON (Analyze) — bright teal override === */
-.stButton > button[kind="primary"],
-[data-testid="stBaseButton-primary"] {{
-    background: linear-gradient(135deg, {C['teal']}, #0099BB) !important;
-    color: #000 !important; font-weight: 700 !important;
-    border: none !important; font-size: .88rem !important;
-    letter-spacing: .05em !important;
-}}
-.stButton > button[kind="primary"]:hover,
-[data-testid="stBaseButton-primary"]:hover {{
-    background: linear-gradient(135deg, {C['teal']}, #0099BB) !important;
-    box-shadow: 0 0 24px rgba(0,212,255,.45) !important;
-    transform: translateY(-2px) !important;
+    border-color: {C['teal']} !important;
+    box-shadow: none !important;
 }}
 
 /* === INPUTS === */
