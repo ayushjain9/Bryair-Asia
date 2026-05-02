@@ -1050,6 +1050,11 @@ def page_ai():
     st.session_state.setdefault('pr_drafts', [])
     st.session_state.setdefault('ai_chip_query', '')
 
+    # Clear textarea before any widget is instantiated (Streamlit forbids
+    # writing to a widget's session key after the widget has rendered).
+    if st.session_state.pop('_clear_textarea', False):
+        st.session_state['ai_textarea'] = ''
+
     # ── PR drafts panel (visible only if drafts exist) ────────────────────
     if st.session_state['pr_drafts']:
         section_header("Drafted Purchase Requisitions",
@@ -1129,7 +1134,7 @@ def page_ai():
             st.session_state['ai_chat_history'] = []
             st.session_state['ai_display'] = []
             st.session_state['ai_chip_query'] = ''
-            st.session_state['ai_textarea'] = ''
+            st.session_state['_clear_textarea'] = True  # cleared at top of next run
             st.rerun()
 
     if go_btn:
