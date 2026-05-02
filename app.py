@@ -1069,6 +1069,7 @@ def page_ai():
         with cols[i]:
             if st.button(ex, key=f"qex_{i}", use_container_width=True):
                 st.session_state['ai_chip_query'] = ex
+                st.session_state['ai_textarea'] = ex  # directly update widget state (Streamlit Cloud compat)
                 st.rerun()
 
     st.markdown("---")
@@ -1106,7 +1107,7 @@ def page_ai():
     # ── Input area ────────────────────────────────────────────────────────
     section_header("Ask Anything")
     query = st.text_area(
-        "", value=st.session_state['ai_chip_query'],
+        "",
         placeholder="e.g. For the highest-risk supplier, list their A-class items.",
         height=95, label_visibility="collapsed", key="ai_textarea",
     )
@@ -1119,6 +1120,7 @@ def page_ai():
             st.session_state['ai_chat_history'] = []
             st.session_state['ai_display'] = []
             st.session_state['ai_chip_query'] = ''
+            st.session_state['ai_textarea'] = ''
             st.rerun()
 
     if go_btn:
