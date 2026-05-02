@@ -1076,6 +1076,31 @@ def page_ai():
                 st.rerun()
         st.markdown("---")
 
+    # ── Example Questions ─────────────────────────────────────────────────
+    with st.expander("📖  Example Questions"):
+        st.markdown("""
+**📊 Lookups (uses query_db)**
+- Top 20 materials by stock value
+- Materials below safety stock in P9
+- TBO breakdown by supplier
+
+**🔮 Forecasting (uses forecast_material)**
+- Forecast demand for 48060 next year
+- Optimal safety stock for material 70809 at 99% service level
+- For my top 5 A-class items, compare current vs optimal SS
+
+**🛡️ Supplier risk (uses supplier_risk)**
+- Risk profile of SONEPAR INDIA PVT LTD
+- Suppliers with single-source A-class exposure
+- Spend concentration of top 5 suppliers
+
+**📝 Action (uses draft_pr)**
+- Draft a PR for material 48060, qty 100
+- Critical P9 items — draft PRs for the top 3 by shortage
+        """)
+
+    st.markdown("---")
+
     # ── Quick-query chips ─────────────────────────────────────────────────
     section_header("Quick Queries")
     cols = st.columns(len(EXAMPLES))
@@ -1173,28 +1198,6 @@ def page_ai():
                     st.session_state['pr_drafts'].append(out)
 
             st.rerun()
-
-    with st.expander("📖  Example Questions"):
-        st.markdown("""
-**📊 Lookups (uses query_db)**
-- Top 20 materials by stock value
-- Materials below safety stock in P9
-- TBO breakdown by supplier
-
-**🔮 Forecasting (uses forecast_material)**
-- Forecast demand for 48060 next year
-- Optimal safety stock for material 70809 at 99% service level
-- For my top 5 A-class items, compare current vs optimal SS
-
-**🛡️ Supplier risk (uses supplier_risk)**
-- Risk profile of SONEPAR INDIA PVT LTD
-- Suppliers with single-source A-class exposure
-- Spend concentration of top 5 suppliers
-
-**📝 Action (uses draft_pr)**
-- Draft a PR for material 48060, qty 100
-- Critical P9 items — draft PRs for the top 3 by shortage
-        """)
 
 # ══════════════════════════════════════════════════════════════════════════════
 # MAIN
