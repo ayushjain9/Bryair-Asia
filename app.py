@@ -163,18 +163,24 @@ iframe {{ background: {C['surface']} !important; border-radius: 10px !important;
     background: {C['surface']} !important; border: 1px solid {C['border']} !important;
     border-radius: 10px !important;
 }}
-/* Expander toggle button — reset our broad button styles so arrow text stays hidden */
+/* Hide "arrow_right" Material Icons text when webfont fails to load on Streamlit Cloud */
+[data-testid="stExpander"] summary span.material-icons,
+[data-testid="stExpander"] summary span.material-symbols-rounded,
+[data-testid="stExpander"] summary span.material-symbols-outlined,
+[data-testid="stExpander"] summary span[class*="material"] {{
+    font-size: 0 !important; width: 0 !important; overflow: hidden !important;
+    visibility: hidden !important;
+}}
+/* Keep the SVG arrow visible and teal */
+[data-testid="stExpander"] summary svg {{
+    fill: {C['teal']} !important; flex-shrink: 0 !important;
+}}
+/* Expander toggle button — reset our broad button styles */
 [data-testid="stExpander"] summary button,
 [data-testid="stExpander"] summary [data-testid="stBaseButton-secondary"],
 [data-testid="stExpander"] summary [data-testid="stBaseButton-primary"] {{
     background: transparent !important; border: none !important;
-    box-shadow: none !important; color: transparent !important;
-    font-size: 0 !important; padding: 0 !important;
-}}
-[data-testid="stExpander"] summary button svg,
-[data-testid="stExpander"] summary [data-testid="stBaseButton-secondary"] svg,
-[data-testid="stExpander"] summary [data-testid="stBaseButton-primary"] svg {{
-    font-size: 16px !important; fill: {C['teal']} !important; color: {C['teal']} !important;
+    box-shadow: none !important; padding: 0 !important;
 }}
 [data-testid="stExpander"] summary p {{
     color: {C['text_bright']} !important; font-family: {C['sans']} !important;
