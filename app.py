@@ -163,6 +163,23 @@ iframe {{ background: {C['surface']} !important; border-radius: 10px !important;
     background: {C['surface']} !important; border: 1px solid {C['border']} !important;
     border-radius: 10px !important;
 }}
+/* Expander toggle button — reset our broad button styles so arrow text stays hidden */
+[data-testid="stExpander"] summary button,
+[data-testid="stExpander"] summary [data-testid="stBaseButton-secondary"],
+[data-testid="stExpander"] summary [data-testid="stBaseButton-primary"] {{
+    background: transparent !important; border: none !important;
+    box-shadow: none !important; color: transparent !important;
+    font-size: 0 !important; padding: 0 !important;
+}}
+[data-testid="stExpander"] summary button svg,
+[data-testid="stExpander"] summary [data-testid="stBaseButton-secondary"] svg,
+[data-testid="stExpander"] summary [data-testid="stBaseButton-primary"] svg {{
+    font-size: 16px !important; fill: {C['teal']} !important; color: {C['teal']} !important;
+}}
+[data-testid="stExpander"] summary p {{
+    color: {C['text_bright']} !important; font-family: {C['sans']} !important;
+    font-size: .9rem !important; margin: 0 !important;
+}}
 
 /* === RADIO === */
 [data-testid="stRadio"] label span {{ color: {C['text']} !important; }}
