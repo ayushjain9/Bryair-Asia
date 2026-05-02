@@ -106,31 +106,34 @@ p, span, div, label, li {{ color: {C['text']} !important; font-family: {C['sans'
     letter-spacing: .07em !important; color: {C['text']} !important;
 }}
 
-/* === BUTTONS — primary (Analyze) === */
+/* === ALL BUTTONS — default to dark chip style === */
 .stButton > button {{
-    background: linear-gradient(135deg, {C['teal']}, #0099BB) !important;
-    color: #000 !important; font-weight: 700 !important;
-    border: none !important; border-radius: 8px !important;
-    font-family: {C['sans']} !important; letter-spacing: .05em !important;
-    transition: all .2s ease !important;
-}}
-.stButton > button:hover {{
-    box-shadow: 0 0 24px rgba(0,212,255,.45) !important;
-    transform: translateY(-2px) !important;
-}}
-
-/* === QUICK QUERY CHIPS — more subtle === */
-div[data-testid="column"] .stButton > button {{
     background: {C['surface2']} !important;
     color: {C['teal']} !important;
     border: 1px solid {C['teal']}40 !important;
     font-weight: 500 !important; font-size: .78rem !important;
-    letter-spacing: 0 !important; box-shadow: none !important;
-    transform: none !important; padding: .4rem .6rem !important;
+    border-radius: 8px !important; letter-spacing: 0 !important;
+    font-family: {C['sans']} !important; box-shadow: none !important;
+    transform: none !important; transition: all .2s ease !important;
 }}
-div[data-testid="column"] .stButton > button:hover {{
+.stButton > button:hover {{
     background: {C['teal_dim']} !important;
     box-shadow: none !important; transform: none !important;
+}}
+
+/* === PRIMARY BUTTON (Analyze) — bright teal override === */
+.stButton > button[kind="primary"],
+[data-testid="stBaseButton-primary"] {{
+    background: linear-gradient(135deg, {C['teal']}, #0099BB) !important;
+    color: #000 !important; font-weight: 700 !important;
+    border: none !important; font-size: .88rem !important;
+    letter-spacing: .05em !important;
+}}
+.stButton > button[kind="primary"]:hover,
+[data-testid="stBaseButton-primary"]:hover {{
+    background: linear-gradient(135deg, {C['teal']}, #0099BB) !important;
+    box-shadow: 0 0 24px rgba(0,212,255,.45) !important;
+    transform: translateY(-2px) !important;
 }}
 
 /* === INPUTS === */
