@@ -1,0 +1,30 @@
+# Secrets — never commit
+.env
+*.env
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Source data (confidential — stays local, DB is pre-built)
+Data/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Claude Code dev config
+.claude/
+
+# Document generation scripts (not needed by Streamlit app)
+generate_docs.py
+generate_technical_doc.py
+
+# Word/Excel temp lock files
+~$*
+
+# OS noise
+.DS_Store
+Thumbs.db
