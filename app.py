@@ -356,7 +356,7 @@ def sidebar():
                 ⚡ Procurement<br>Command Center
             </div>
             <div style='font-size:.7rem;color:{C["text"]};margin-top:.4rem;font-family:{C["mono"]}'>
-                Multi-Warehouse Analytics v4.0
+                Multi-Warehouse Analytics v
             </div>
         </div>""", unsafe_allow_html=True)
 
