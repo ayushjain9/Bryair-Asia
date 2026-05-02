@@ -163,28 +163,35 @@ iframe {{ background: {C['surface']} !important; border-radius: 10px !important;
     background: {C['surface']} !important; border: 1px solid {C['border']} !important;
     border-radius: 10px !important;
 }}
-/* Hide "arrow_right" Material Icons text when webfont fails to load on Streamlit Cloud */
-[data-testid="stExpander"] summary span.material-icons,
-[data-testid="stExpander"] summary span.material-symbols-rounded,
-[data-testid="stExpander"] summary span.material-symbols-outlined,
-[data-testid="stExpander"] summary span[class*="material"] {{
-    font-size: 0 !important; width: 0 !important; overflow: hidden !important;
+/* Expander summary — hide ALL children 2 levels deep, then selectively re-show
+   p (label) and svg (arrow). This catches 'arrow_right' text regardless of
+   whatever class name Streamlit Cloud uses for the icon span. */
+[data-testid="stExpander"] summary > *,
+[data-testid="stExpander"] summary > * > * {{
     visibility: hidden !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
 }}
-/* Keep the SVG arrow visible and teal */
+/* Re-show the label paragraph */
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary p * {{
+    visibility: visible !important;
+    font-size: .9rem !important; line-height: 1.4 !important;
+    color: {C['text_bright']} !important; font-family: {C['sans']} !important;
+    margin: 0 !important;
+}}
+/* Re-show the SVG arrow */
 [data-testid="stExpander"] summary svg {{
+    visibility: visible !important;
+    font-size: 16px !important; line-height: 1 !important;
     fill: {C['teal']} !important; flex-shrink: 0 !important;
 }}
-/* Expander toggle button — reset our broad button styles */
+/* Reset button chrome inside summary */
 [data-testid="stExpander"] summary button,
 [data-testid="stExpander"] summary [data-testid="stBaseButton-secondary"],
 [data-testid="stExpander"] summary [data-testid="stBaseButton-primary"] {{
     background: transparent !important; border: none !important;
     box-shadow: none !important; padding: 0 !important;
-}}
-[data-testid="stExpander"] summary p {{
-    color: {C['text_bright']} !important; font-family: {C['sans']} !important;
-    font-size: .9rem !important; margin: 0 !important;
 }}
 
 /* === RADIO === */
