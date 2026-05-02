@@ -1026,6 +1026,15 @@ def page_ai():
         Tool-calling Claude · Memory across turns · 5 tools (SQL, forecast, supplier risk, draft PR)
     </p>""", unsafe_allow_html=True)
 
+    if not os.getenv('ANTHROPIC_API_KEY'):
+        alert_box(
+            "ANTHROPIC_API_KEY is not set. "
+            "Go to Streamlit Cloud → your app → <b>Settings → Secrets</b> and add:<br>"
+            "<code>ANTHROPIC_API_KEY = \"sk-ant-...\"</code>",
+            "critical"
+        )
+        return
+
     EXAMPLES = [
         "Top 3 highest-risk suppliers and why",
         "Forecast next year for material 48060",
