@@ -245,14 +245,14 @@ def has_table(name):
 # ── UI COMPONENTS ──────────────────────────────────────────────────────────────
 def stat_card(label, value, icon, accent="teal", sub=None):
     ac = C[accent]; ac_dim = C[f"{accent}_dim"]
-    s = f"<div style='font-family:{C['mono']};font-size:.75rem;color:{C['text']};margin-top:.35rem'>{sub}</div>" if sub else ""
+    s = f"<div style='font-family:{C['mono']};font-size:.75rem;color:#94A3B8;margin-top:.35rem'>{sub}</div>" if sub else ""
     st.markdown(f"""
     <div style='background:{C["surface"]};border:1px solid {ac}40;border-left:3px solid {ac};
                 border-radius:12px;padding:1.1rem 1.3rem;height:110px;position:relative;overflow:hidden'>
-        <div style='position:absolute;top:-8px;right:8px;font-size:3.2rem;opacity:0.07;user-select:none'>{icon}</div>
-        <div style='font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-                    color:{C["text"]};margin-bottom:.35rem'>{label}</div>
-        <div style='font-size:1.65rem;font-weight:700;font-family:{C["mono"]};color:{C["text_bright"]};line-height:1'>{value}</div>
+        <div style='position:absolute;top:-4px;right:10px;font-size:3.6rem;opacity:0.22;user-select:none;line-height:1'>{icon}</div>
+        <div style='font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+                    color:#CBD5E1;margin-bottom:.35rem'>{label}</div>
+        <div style='font-size:1.65rem;font-weight:700;font-family:{C["mono"]};color:#FFFFFF;line-height:1'>{value}</div>
         {s}
     </div>""", unsafe_allow_html=True)
 
