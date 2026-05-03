@@ -590,8 +590,11 @@ def page_optimization():
         <div style='background:{C["teal_dim"]};border:1px solid {C["teal"]}30;border-radius:10px;
                     padding:.9rem 1.1rem;margin-top:.8rem;font-family:{C["mono"]};font-size:.82rem'>
             <b style='color:{C["teal"]}'>TBO Formula</b>&nbsp;&nbsp;
-            TBO = Safety Stock − (Current Stock + Pending Orders − Allocations)<br>
-            <span style='color:{C["text"]};font-size:.75rem'>Enhanced: ROP = (Lead Time × Daily Demand) + Safety Stock</span>
+            TBO = max(0, ROP − Available) &nbsp;·&nbsp; rounded up to nearest 10<br>
+            <span style='color:{C["text"]};font-size:.75rem'>
+              Available = Current Stock + Pending Orders − Allocations &nbsp;|&nbsp;
+              ROP = (Lead Time × Daily Demand) + Safety Stock
+            </span>
         </div>""", unsafe_allow_html=True)
 
     with tab3:
