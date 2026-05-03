@@ -249,7 +249,7 @@ def stat_card(label, value, icon, accent="teal", sub=None):
     st.markdown(f"""
     <div style='background:{C["surface"]};border:1px solid {ac}40;border-left:3px solid {ac};
                 border-radius:12px;padding:1.1rem 1.3rem;height:110px;position:relative;overflow:hidden'>
-        <div style='position:absolute;top:-4px;right:10px;font-size:3.6rem;opacity:0.22;user-select:none;line-height:1'>{icon}</div>
+        <div style='position:absolute;top:.75rem;right:.85rem;font-size:1.75rem;opacity:0.75;user-select:none;line-height:1'>{icon}</div>
         <div style='font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
                     color:#CBD5E1;margin-bottom:.35rem'>{label}</div>
         <div style='font-size:1.65rem;font-weight:700;font-family:{C["mono"]};color:#FFFFFF;line-height:1'>{value}</div>
