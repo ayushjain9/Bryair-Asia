@@ -76,6 +76,29 @@ html, body,
 }}
 [data-testid="stSidebar"] * {{ color: {C['text']} !important; font-family: {C['sans']} !important; }}
 
+/* Sidebar collapse/expand toggle — make the chevron visible against the dark theme */
+[data-testid="stSidebarCollapsedControl"],
+[data-testid="stSidebarCollapseButton"],
+[data-testid="collapsedControl"],
+button[kind="header"] {{
+    background: {C['surface2']} !important;
+    border: 1px solid {C['teal']} !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 12px rgba(0,212,255,0.35) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 9999 !important;
+}}
+[data-testid="stSidebarCollapsedControl"] svg,
+[data-testid="stSidebarCollapseButton"] svg,
+[data-testid="collapsedControl"] svg,
+button[kind="header"] svg {{
+    color: {C['teal']} !important;
+    fill: {C['teal']} !important;
+    width: 22px !important;
+    height: 22px !important;
+}}
+
 /* === HEADINGS === */
 h1 {{
     font-family: {C['sans']} !important; font-size: 2rem !important;
