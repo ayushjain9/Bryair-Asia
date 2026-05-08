@@ -353,10 +353,10 @@ def sidebar():
         st.markdown(f"""
         <div style='padding:1rem 0 1.2rem 0;border-bottom:1px solid {C["border"]};margin-bottom:1.2rem'>
             <div style='font-size:1.1rem;font-weight:700;color:{C["text_bright"]};letter-spacing:-.02em;line-height:1.3'>
-                ⚡ Procurement<br>Command Center
+                ⚡ Inventory & Procurement<br>Intelligence Platform
             </div>
             <div style='font-size:.7rem;color:{C["text"]};margin-top:.4rem;font-family:{C["mono"]}'>
-                Multi-Warehouse Analytics v
+                Multi-Warehouse Analytics
             </div>
         </div>""", unsafe_allow_html=True)
 
