@@ -76,11 +76,17 @@ html, body,
 }}
 [data-testid="stSidebar"] * {{ color: {C['text']} !important; font-family: {C['sans']} !important; }}
 
-/* Sidebar collapse/expand toggle — make the chevron visible against the dark theme */
+/* Sidebar collapse/expand toggle — make the chevron visible against the dark theme.
+   Same harden-against-icon-text-leak trick used on the expander: hide every child
+   so 'keyboard_double_arrow_right' Material-icon text can't leak through on
+   Streamlit Cloud, then selectively re-show the real SVG. We also paint our own
+   chevron via ::after as a fallback in case the SVG isn't present. */
 [data-testid="stSidebarCollapsedControl"],
 [data-testid="stSidebarCollapseButton"],
 [data-testid="collapsedControl"],
-button[kind="header"] {{
+[data-testid="stSidebarHeader"] button,
+button[kind="header"],
+button[kind="headerNoPadding"] {{
     background: {C['surface2']} !important;
     border: 1px solid {C['teal']} !important;
     border-radius: 8px !important;
@@ -88,15 +94,51 @@ button[kind="header"] {{
     opacity: 1 !important;
     visibility: visible !important;
     z-index: 9999 !important;
+    width: 36px !important; height: 36px !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    color: transparent !important; font-size: 0 !important; line-height: 0 !important;
+    position: relative !important;
 }}
+/* Hide every descendant — kills any 'keyboard_double_arrow_right' icon-name text */
+[data-testid="stSidebarCollapsedControl"] *,
+[data-testid="stSidebarCollapseButton"] *,
+[data-testid="collapsedControl"] *,
+[data-testid="stSidebarHeader"] button *,
+button[kind="header"] *,
+button[kind="headerNoPadding"] * {{
+    visibility: hidden !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    color: transparent !important;
+}}
+/* Re-show the real SVG icon if present */
 [data-testid="stSidebarCollapsedControl"] svg,
 [data-testid="stSidebarCollapseButton"] svg,
 [data-testid="collapsedControl"] svg,
-button[kind="header"] svg {{
+[data-testid="stSidebarHeader"] button svg,
+button[kind="header"] svg,
+button[kind="headerNoPadding"] svg {{
+    visibility: visible !important;
     color: {C['teal']} !important;
     fill: {C['teal']} !important;
     width: 22px !important;
     height: 22px !important;
+}}
+/* CSS-only fallback chevron (>>) in case the SVG is missing on Streamlit Cloud */
+[data-testid="stSidebarCollapsedControl"]::after,
+[data-testid="collapsedControl"]::after,
+button[kind="header"]::after {{
+    content: "»" !important;
+    visibility: visible !important;
+    color: {C['teal']} !important;
+    font-family: {C['sans']} !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    font-weight: 700 !important;
+    position: absolute !important;
+    top: 50% !important; left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    pointer-events: none !important;
 }}
 
 /* === HEADINGS === */
