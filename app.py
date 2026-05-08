@@ -24,7 +24,7 @@ DB_PATH = 'procurement_final.db'
 
 # ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Procurement Command Center",
+    page_title="Inventory & Procurement Intelligence Platform",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded"
